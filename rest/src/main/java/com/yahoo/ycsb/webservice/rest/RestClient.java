@@ -120,7 +120,7 @@ public class RestClient extends DB {
   public Status insert(String table, String endpoint, Map<String, ByteIterator> values) {
     int responseCode;
     try {
-      responseCode = httpExecute(new HttpPost(urlPrefix + endpoint), values.get("data").toString());
+      responseCode = httpExecute(new HttpPost(urlPrefix + endpoint), values.get("field0").toString());
     } catch (Exception e) {
       responseCode = handleExceptions(e, urlPrefix + endpoint, HttpMethod.POST);
     }
@@ -149,8 +149,9 @@ public class RestClient extends DB {
   @Override
   public Status update(String table, String endpoint, Map<String, ByteIterator> values) {
     int responseCode;
+
     try {
-      responseCode = httpExecute(new HttpPut(urlPrefix + endpoint), values.get("data").toString());
+      responseCode = httpExecute(new HttpPut(urlPrefix + endpoint), values.get("field0").toString());
     } catch (Exception e) {
       responseCode = handleExceptions(e, urlPrefix + endpoint, HttpMethod.PUT);
     }
