@@ -18,7 +18,6 @@
 package com.yahoo.ycsb.webservice.rest;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -40,8 +39,8 @@ import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.ContentType;
-import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
@@ -256,9 +255,8 @@ public class RestClient extends DB {
     for (int i = 0; i < headers.length; i = i + 2) {
       request.setHeader(headers[i], headers[i + 1]);
     }
-    InputStreamEntity reqEntity = new InputStreamEntity(new ByteArrayInputStream(data.getBytes()),
-          ContentType.APPLICATION_FORM_URLENCODED);
-    reqEntity.setChunked(true);
+    ByteArrayEntity reqEntity = new ByteArrayEntity(data.getBytes(), ContentType.APPLICATION_FORM_URLENCODED);
+    reqEntity.setChunked(false);
     request.setEntity(reqEntity);
     CloseableHttpResponse response = client.execute(request);
     responseCode = response.getStatusLine().getStatusCode();
