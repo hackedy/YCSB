@@ -1,0 +1,12 @@
+workload=com.yahoo.ycsb.workloads.CoreWorkload
+readallfields=true
+fieldcount=1
+fieldlength=4
+
+target=50
+recordcount=500
+operationcount=1000
+requestdistribution=uniform
+
+readproportion=0.5
+updateproportion=0.5
