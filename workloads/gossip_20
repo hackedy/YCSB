@@ -3,9 +3,9 @@ readallfields=true
 fieldcount=1
 fieldlength=4
 
-target=50
+target=20
 recordcount=500
-operationcount=3000
+operationcount=1000
 requestdistribution=uniform
 
 readproportion=0.5
