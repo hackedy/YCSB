@@ -4,9 +4,9 @@ fieldcount=1
 fieldlength=4
 
 target=50
-recordcount=500
+recordcount=100
 operationcount=12000
-requestdistribution=uniform
+requestdistribution=zipfian
 
 readproportion=0.5
 updateproportion=0.5
